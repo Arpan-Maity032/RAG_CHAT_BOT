@@ -9,6 +9,7 @@ python-multipart #handel upload file
 langchain #use to build llm powered application
 langchain-google-genai #help to use gemini llm inside langchain
 langchain-community #help to intregration doccument loader and langchain
+langchain-text-splitters
 
 pypdf #parsing pdf
 docx2txt # parsing .doc
