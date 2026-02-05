@@ -1,0 +1,15 @@
+faiss-cpu  #vector database using cpu
+
+python-dotenv #environment veriable
+
+fastapi #Api creation
+uvicorn #python asgi web server
+python-multipart #handel upload file
+
+langchain #use to build llm powered application
+langchain-google-genai #help to use gemini llm inside langchain
+langchain-community #help to intregration doccument loader and langchain
+
+pypdf #parsing pdf
+docx2txt # parsing .doc
+tiktoken #token counting during tokenization
