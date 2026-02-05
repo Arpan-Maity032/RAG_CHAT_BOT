@@ -26,7 +26,7 @@ def chat_endpoint(request: QueryRequest):
 def upload_document(file:UploadFile = File(...)):
     temp_dir = "temp_uploads"
     os.makedirs(temp_dir,exist_ok=True)
-    file_path = f"{temp_dir}/{File.filename}"
+    file_path = f"{temp_dir}/{file.filename}"
 
     try:
         with open(file_path,"wb") as buffer:
