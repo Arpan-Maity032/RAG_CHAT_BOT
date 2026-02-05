@@ -1,16 +1,15 @@
-faiss-cpu  #vector database using cpu
+faiss-cpu==1.8.0  #vector database using cpu
 
-python-dotenv #environment veriable
+python-dotenv==1.0.1 #environment veriable
 
-fastapi #Api creation
-uvicorn #python asgi web server
-python-multipart #handel upload file
+fastapi==0.110.0 #Api creation
+uvicorn==0.29.0 #python asgi web server
+python-multipart==0.0.9 #handel upload file
 
-langchain #use to build llm powered application
-langchain-google-genai #help to use gemini llm inside langchain
-langchain-community #help to intregration doccument loader and langchain
-langchain-text-splitters
+langchain==0.1.20 #use to build llm powered application
+langchain-google-genai==1.0.3 #help to use gemini llm inside langchain
+langchain-community==0.0.38 #help to intregration doccument loader and langchain
 
-pypdf #parsing pdf
-docx2txt # parsing .doc
-tiktoken #token counting during tokenization
+pypdf==4.0.2 #parsing pdf
+docx2txt==0.8 # parsing .doc
+tiktoken==0.6.0 #token counting during tokenization
