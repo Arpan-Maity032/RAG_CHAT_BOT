@@ -65,8 +65,32 @@ uvicorn main:app --reload --host 0.0.0.0 --port 8000
 
 Before run Backend make sure put the gemini api key in .env file gemini_api_key =(your API key)
 
-# You can add documents in backend admin side vis "/upload" or "/docs"
+# You can add documents in backend admin side vis "http://127.0.0.1:8000/update" or "http://127.0.0.1:8000/docs"
 ---
 ![Demo Image](Image/HLD%20design_RAG_CHATBOT.png)
 ---
 
+# FRONTEND
+
+---
+The Frontend is built with Streamlit, serving as a lightweight Client-Side interface. It handles user interactions—specifically chatting and file uploads—and forwards them to the backend via REST API calls. It contains no business logic, acting purely as a presentation layer to visualize the RAG system's responses.
+
+run the backend using bellow comand
+'''
+streamlit run app.py
+'''
+
+---
+![Demo Image](Image/frontend_UI_Chatbot.jpeg)
+---
+
+```File Structure
+
+backend/
+├── .env     # BACKEND_URL = "http://127.0.0.1:8000" take backend API
+├── app.py    # all streamlit code
+
+```
+# NOTE:
+  Make sure always check backend run which port and define this in .env file in frontned
+  make sure after running faiss_index created automaticaly don`t need to create file( for more look at .gitignore)
