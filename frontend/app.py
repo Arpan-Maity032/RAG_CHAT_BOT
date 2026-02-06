@@ -27,7 +27,7 @@ st.markdown("""
     }
     /* Sidebar Styling */
     [data-testid="stSidebar"] {
-        background-color: #f8f9fa;
+        background-color: #863E36;
         border-right: 1px solid #ddd;
     }
     /* Chat Bubble Tweaks */
@@ -40,21 +40,46 @@ st.markdown("""
 
 with st.sidebar:
     st.header("Knowledge Base")
-    st.info(f"Connected to RAG Engine")
 
-    st.markdown("### Indexed Documents")
-    st.caption("Active in Knowledge Graph:")
-    st.code("• Company_Policy_v2.pdf\n• Technical_Specs.docx\n• HR_Guidelines.txt", language="text")
-    
-    st.divider()
-    st.markdown("### ⚙️ System Status")
     try:
         if requests.get(f"{backend_api}/").status_code == 200:
-            st.success("Backend: Online")
+            st.success("System Online")
         else:
-            st.warning("Backend: Unstable")
+            st.error("System Offline")
     except:
-        st.error("Backend: Offline")
+        st.error("Connection Failed")
+
+    st.divider()
+
+    st.markdown("Upload Document")
+    uploaded_file = st.file_uploader(
+        "Add a PDF, DOCX, or TXT",
+        type=["pdf","docx","txt","md"],
+        help="The AI will instantly read and index this file."
+    )
+
+    if uploaded_file:
+        if st.button("Add File", type="primary"):
+            with st.spinner("Uploading & Indexing..."):
+                try:
+                    files = {"file": (uploaded_file.name, uploaded_file, uploaded_file.type)}
+                    response = requests.post(f"{backend_api}/upload", files=files)
+                    
+                    if response.status_code == 200:
+                        data = response.json()
+                        st.toast(f"Successfully added {data['filename']}", icon="++")
+                        st.success(f"Indexed {data['chunks_added']} chunks.")
+                    else:
+                        st.error(f"Upload Failed: {response.text}")
+                
+                except Exception as e:
+                    st.error(f"Connection Error: {e}")
+
+    st.divider()
+    
+    st.markdown("### Active Index")
+    st.caption("Documents currently in the Knowledge Graph:")
+    st.code("Backend manage updated files", language="text")
 
 
 st.markdown(f'<div class="main-header>{Page_title}</div>',unsafe_allow_html=True)
@@ -62,7 +87,7 @@ st.markdown(f'<div class="main-header>{Page_title}</div>',unsafe_allow_html=True
 if "messages" not in st.session_state:
     st.session_state.messages = [
         {
-            "role": "assistant", "content": "Hello! I am your AI assistant. Ask me anything about the uploaded documents."
+            "role": "assistant", "content": "Welcome to Orbilearn! Please feel free to share your questions—I’m here to help you every step."
         }
     ]
 
