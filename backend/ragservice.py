@@ -34,7 +34,7 @@ class RagService:
     
     def addFile(self,file_path:str,original_fileName:str):
         
-        extention = os.splitext(original_fileName)[1].lower()
+        extention = os.path.splitext(original_fileName)[1].lower()
 
         if extention == ".pdf":
             loder = PyPDFLoader(file_path)
