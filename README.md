@@ -67,7 +67,7 @@ Before run Backend make sure put the gemini api key in .env file gemini_api_key 
 
 # You can add documents in backend admin side vis "http://127.0.0.1:8000/update" or "http://127.0.0.1:8000/docs"
 ---
-![Demo Image](Image/HLD%20design_RAG_CHATBOT.png)
+![Demo Image](Image/Upload_doc.jpeg)
 ---
 
 # FRONTEND
