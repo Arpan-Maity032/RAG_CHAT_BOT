@@ -17,7 +17,7 @@ class RagService:
 
         self.index_path = "faiss_index"
         self.embeddings = GoogleGenerativeAIEmbeddings(
-            model="gemini-embedding-001",
+            model="models/gemini-embedding-001",
             google_api_key=self.api_key
         )
         self.vector_db = self._load_db()
